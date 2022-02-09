@@ -1,45 +1,33 @@
 <?php
 
-require_once 'inc/conn.inc.php';
+class Usuario {
 
-
-    $login = $_POST['login'];
-    $senha = $_POST['senha'];
-
-
-    if(!$login == " " || !$senha == " ") {
-        echo "Você deve digitar sua senha e login";
-        exit;
-    }
-
-    $stmt = $conn->prepare("SELECT * FROM tb_admin WHERE login = :login AND senha = :senha");
-    
-    $stmt->bindValue("login", $login);
-    $stmt->bindValue("senha", $senha);
-
-    $results = $stmt->execute(); 
-
-    if($results != 0) {
+    public function login($login, $senha) {
+       
+        global $conn;
+      
+        $stmt = $conn->prepare("SELECT * FROM tb_admin WHERE login = :login AND senha = :senha");
         
-        if($senha === $senha) {
-            
-            $_SESSION['loginSession'] = $_POST['login'];
-            
-            header("location: admin.php");
+        $stmt->bindValue("login", $login);
+        $stmt->bindValue("senha", md5($senha));
+        $stmt->execute(); 
+
+        if($stmt->rowCount() > 0) {
+
+            $dados = $stmt->fetch();
+
+            $_SESSION['idusuario'] = $dados['id_admin'];
+
+            return true;
+        } else {
+            return false;
         }
 
-    } else {
-        return false;
-        header("location: admin.html");
     }
+}
 
 
 
-    
-
-   
-
-    
 
 
 ?>

@@ -1,16 +1,6 @@
 <?php
-session_start();
 
-require_once "inc/conn.inc.php";
-
-
-if((!isset($_SESSION['id_admin'])) AND (!isset($_SESSION['nome']))){
-    $_SESSION['msg'] = "<p>Erro: Necessário realizar o login para acessar a página!</p>";
-   
-}
-
-
-
+include 'login.php';
 //$filter = " where title like '%:title%' ";
 
 $stmt = $conn->prepare("SELECT id_admin, login, senha, nome, email, cpf, celular, data FROM tb_admin limit 10");
