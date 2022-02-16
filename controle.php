@@ -18,9 +18,9 @@ require_once "inc/header.php";
     require_once "inc/sidebar.php";
     ?>
    
-    <div class="content-wrapper">
+    <div class="content-wrapper  pt-5 pr-4">
 
-    <form>
+    <form class="form-controle">
         <div class="form-row">
 
             <div class="col col-md-3">
@@ -40,32 +40,43 @@ require_once "inc/header.php";
             </div> <!--end col-->
 
             <div class="col col-md-3">
-                <input type="text" class="form-control" placeholder="Contato">
+            <label for="">Contato</label>
+                <input type="text" class="form-control " placeholder="Contato">
             </div> <!--end col-->
 
             <div class="col col-md-3">
-            <div id="display">
-            <h3>00:00</h3>
-            </div>
+         
             </div>
 
         </div> <!--end row-->
     </form>
-
-
-
-    <audio id="sound" src="./assets/sound/alarm.mp3" style="display: none;"></audio>
-
     <div class="container">
-    <h2>Minutos:</h2>
-    <select id="minutos" name="minutos"></select>
+        <div class="form-row mt-4">
+            <div class="col-md-6">
+                <div class="container">
+                    <h2>Minutos:</h2>
+                    <select id="minutos" name="minutos"></select>
 
-    <h2>Segundos:</h2>
-    <select id="segundos" name="segundos"></select>
+                    <h2>Segundos:</h2>
+                    <select id="segundos" name="segundos"></select>
+
+                    <button class="btn btn-success" id="comecar">Começar!</button>
+                    <button class="btn btn-danger" id="parar">Stop</button>
+
+                </div>
+            </div>
+
+            <div class="col-md-12 mt-5">
+            <audio id="sound" src="./assets/sound/alarm.mp3" style="display: none;"></audio>
+                <div id="display">
+                    <h3>00:00</h3>
+                </div>
+            </div>
+        </div>
+   
+
     
-    <button id="comecar">Começar!</button>
-    <button id="parar">Stop</button>
-
+    
 </div>
    
   

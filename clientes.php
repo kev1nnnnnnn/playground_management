@@ -40,7 +40,6 @@ require_once "inc/header.php";
                                             <th>Nome</th>
                                             <th>Contato</th>
                                             <th>Sexo</th>
-                                            <th>Tempo</th>
                                             <th>Idade</th>
                                             <th>nome responsável</th>
                                             <th>Data</th>
@@ -64,7 +63,7 @@ require_once "inc/header.php";
                                                     
                                                 }  
                                             }
-                                            echo "<td> <a href='#' class='badge badge-success'><i class='fa fa-edit'></i>Editar</a> </td>"; ?>
+                                            echo  '<td> <a href="form-editCrianca.php?id_crianca=' . $row['id_crianca'] . '" class="badge badge-success"><i class="fa fa-edit"></i>Editar</a> </td>'; ?>
                                             <?php echo ' <td> <a href="delete.php?id_crianca=' . $row['id_crianca'] . '" class="badge badge-danger"><i class="fa fa-trash"></i> Apagar</a> </td>'; 
                                             echo "</tr>";
                                         }

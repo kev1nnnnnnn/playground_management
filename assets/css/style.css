@@ -35,3 +35,29 @@
      float: right;
      padding: 10px auto;
   }
+.content-wrapper  .container h3{
+   color: #00F777;
+   font-size: 60px;
+   font-weight: bold;
+}
+.content-wrapper  .container #display {
+    background-color: #1c1c1c;
+    position: absolute;
+    width: 250px;
+    text-align: center;
+    border-radius: 10px;
+  
+}
+.content-wrapper  .container {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  
+}
+.content-wrapper .form-controle {
+   
+   margin-left: 5em;
+    
+}

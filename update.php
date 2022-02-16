@@ -4,6 +4,8 @@
 require_once "inc/conn.inc.php";
 
 
+
+
 //$id = addslashes($_GET["id"]);
 $stmt = $conn->prepare("UPDATE tb_admin SET login=:login, senha=:senha,nome=:nome, email=:email, cpf=:cpf, celular=:celular WHERE id_admin=:id_admin");
 
@@ -28,6 +30,8 @@ $stmt->bindParam(":id_admin", $id_admin, PDO::PARAM_INT);
 if ($stmt->execute()) {
     echo "Dados alterados com sucesso!";
     header('Location: admin.php');
+    exit;
 } else {
     echo "Erro ao alterar";
 }
+
