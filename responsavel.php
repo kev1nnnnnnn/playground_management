@@ -1,16 +1,7 @@
 <?php
-session_start();
+
 
 require_once "inc/conn.inc.php";
-
-
-if((!isset($_SESSION['id_admin'])) AND (!isset($_SESSION['nome']))){
-    $_SESSION['msg'] = "<p>Erro: Necessário realizar o login para acessar a página!</p>";
-   
-}
-
-
-
 //$filter = " where title like '%:title%' ";
 
 $stmt = $conn->prepare("SELECT id_responsavel, nome_responsavel, cpf_responsavel, rg_responsavel, endereco_responsavel, data FROM tb_responsavel limit 10");
@@ -67,7 +58,7 @@ require_once "inc/header.php";
                                         foreach ($results as $row) {
                                             echo "<tr>";
                                             foreach ($row as $key => $value) {
-                                                if ($key != "id_responsavel") {
+                                                if ($key != "id") {
                                                     echo "<td>" . $value . "</td>";
                                                 }
                                             }

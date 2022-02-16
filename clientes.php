@@ -59,7 +59,7 @@ require_once "inc/header.php";
                                         foreach ($results as $row) {
                                             echo "<tr>";
                                             foreach ($row as $key => $value) {
-                                                if ($key != "id_crianca") {
+                                                if ($key != "id") {
                                                     echo "<td>" . $value . "</td>";
                                                     
                                                 }  

@@ -1,7 +1,12 @@
 <?php
 
-include 'login.php';
+require_once "inc/conn.inc.php";
 //$filter = " where title like '%:title%' ";
+
+$id = isset($_GET['id_admin']) ? (int) $_GET['id_admin'] : null;
+
+
+
 
 $stmt = $conn->prepare("SELECT id_admin, login, senha, nome, email, cpf, celular, data FROM tb_admin limit 10");
 $stmt->execute();
@@ -63,10 +68,11 @@ require_once "inc/header.php";
                                                     echo "<td>" . $value . "</td>";
                                                 }
                                             }
-                                            echo "<td> <a href='#' class='badge badge-success'><i class='fa fa-edit'></i>Editar</a> </td>"; ?>
+                                            
+                                        echo       '<td> <a href="form-edit.php?id_admin=' . $row['id_admin'] . '" class="badge badge-success"><i class="fa fa-edit"></i>Editar</a> </td>'; ?>
                                             <?php echo ' <td> <a href="delete.php?id_admin=' . $row['id_admin'] . '" class="badge badge-danger"><i class="fa fa-trash"></i> Apagar</a> </td>'; 
                                              
-                                            echo "</tr>";
+                                            echo  "</tr>" ;
                                         }
                                         ?>
                                     </tbody>
@@ -135,3 +141,58 @@ require_once "inc/header.php";
         </div>
     </div>
 <!--FIM MODAL AQUI-->
+
+<!-- Button EDITAR modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <!--FORMULARIO DE CADASTRO MODAL-->
+         <form action="./form-edit.php" method="POST"> 
+                <div class="form-row mt-3">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Nome" name="nome" value="<?php echo $row['nome'];?>">
+                    </div>
+                </div>
+
+                <div class="form-row mt-3">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Login" name="login" value="<?php echo $row['login'];?>">
+                    </div>
+                    <div class="col">
+                        <input type="password" class="form-control" placeholder="Senha" name="senha" value="<?php echo $row['id_admin'];?>">
+                    </div>
+                </div>
+
+                <div class="form-row mt-3">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Email" name="email" value="<?php echo $row['email'];?>">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Cpf" name="cpf" value="<?php echo $row['cpf'];?>">
+                    </div>
+                    <div class="col">
+                        <input type="number" class="form-control" placeholder="Contato" name="celular" value="<?php echo $row['celular'];?>">
+                    </div>
+                </div>
+
+                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </div>
+            </form> <!--end FORM-->
+      </div>
+      
+    </div>
+  </div>
+</div>
