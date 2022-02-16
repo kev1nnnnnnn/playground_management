@@ -36,42 +36,49 @@ foreach ($results as $row) {
 ?>
 
     <div class="container">
- <!--FORMULARIO DE CADASTRO MODAL-->
- <form action="./update.php" method="POST"> 
-                <div class="form-row mt-3">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Nome" name="nome" value="<?php echo $row['nome'];?>">
+        <div class="row">
+            <div class="col-md-6">
+                <!--FORMULARIO DE CADASTRO MODAL-->
+                <form action="./update.php" method="POST" id="myform"> 
+                    <div class="form-row mt-3">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Nome" name="nome" value="<?php echo $row['nome'];?>">
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-row mt-3">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Login" name="login" value="<?php echo $row['login'];?>">
+                    <div class="form-row mt-3">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Login" name="login" value="<?php echo $row['login'];?>">
+                        </div>
+                        <div class="col">
+                            <input type="password" class="form-control" placeholder="Senha" name="senha" value="<?php echo $row['id_admin'];?>">
+                        </div>
                     </div>
-                    <div class="col">
-                        <input type="password" class="form-control" placeholder="Senha" name="senha" value="<?php echo $row['id_admin'];?>">
-                    </div>
-                </div>
 
-                <div class="form-row mt-3">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Email" name="email" value="<?php echo $row['email'];?>">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Cpf" name="cpf" value="<?php echo $row['cpf'];?>">
-                    </div>
-                    <div class="col">
-                        <input type="number" class="form-control" placeholder="Contato" name="celular" value="<?php echo $row['celular'];?>">
-                    </div>
-                </div>
-                <input type="hidden" name="id" value="<?php echo $id ?>">
-                </div>
-                    <div class="modal-footer">
+                    <div class="form-row mt-3">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Email" name="email" value="<?php echo $row['email'];?>">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Cpf" name="cpf" value="<?php echo $row['cpf'];?>">
+                        </div>
+                        <div class="col">
+                            <input type="number" class="form-control" placeholder="Contato" name="celular" value="<?php echo $row['celular'];?>">
+                        </div>
+                        <div class="col">
                         <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Salvar</button>
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                       
                     </div>
-                </div>
-            </form> <!--end FORM-->
+                    <input type="hidden" class="form-control" name="id_admin" value="<?php echo $id_admin ?>">
+                    </div>
+                       
+                    </div>
+                </form> <!--end FORM-->
+            </div>
+        </div>
+ 
 
 
     </div>
@@ -79,3 +86,10 @@ foreach ($results as $row) {
 
 </body>
 </html>
+
+<script>
+
+document.getElementById('myform').reset();
+
+
+</script>
